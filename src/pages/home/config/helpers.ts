@@ -13,27 +13,28 @@ export const formatTime = (date: Date) => {
   });
 };
 
-export const getWindDirectionAbbreviation = (speed: number) => {
-  if (speed < 0) {
-    return "N/A";
-  }
+export const convertWindSpeedToKPH = (mps : number) => {
+  return (mps * 3.6).toFixed(2);
+}
 
-  const degree = ((speed / 3.6) * 180) / Math.PI;
-  if (degree >= 337.5 || degree < 22.5) {
+export const getWindDirection = (deg: number) => {
+  if (deg >= 0 && deg < 22.5) {
     return "N";
-  } else if (degree >= 22.5 && degree < 67.5) {
+  } else if (deg >= 22.5 && deg < 67.5) {
     return "NE";
-  } else if (degree >= 67.5 && degree < 112.5) {
+  } else if (deg >= 67.5 && deg < 112.5) {
     return "E";
-  } else if (degree >= 112.5 && degree < 157.5) {
+  } else if (deg >= 112.5 && deg < 157.5) {
     return "SE";
-  } else if (degree >= 157.5 && degree < 202.5) {
+  } else if (deg >= 157.5 && deg < 202.5) {
     return "S";
-  } else if (degree >= 202.5 && degree < 247.5) {
+  } else if (deg >= 202.5 && deg < 247.5) {
     return "SW";
-  } else if (degree >= 247.5 && degree < 292.5) {
+  } else if (deg >= 247.5 && deg < 292.5) {
     return "W";
-  } else {
+  } else if (deg >= 292.5 && deg < 337.5) {
     return "NW";
+  } else {
+    return "N";
   }
 };

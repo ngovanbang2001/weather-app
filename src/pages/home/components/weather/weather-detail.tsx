@@ -1,5 +1,5 @@
 import { AQI, TempUnit, weekday } from "../../config/constants"
-import { convertFahrenheit, formatTime, getIconUrl, getWindDirectionAbbreviation } from "../../config/helpers"
+import { convertFahrenheit, convertWindSpeedToKPH, formatTime, getIconUrl, getWindDirection } from "../../config/helpers"
 import { AirPollution, CurrentWeather, Location } from "../../config/type"
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 }
 const WeatherDetail = ({ currentWeather, currentLocation, airPollution, isCelsius, handleChangeTemp }: Props) => {
   const dayOfWeek = weekday[new Date((currentWeather?.dt || 1) * 1000).getDay()]
-  const currentTime = formatTime(new Date((currentWeather?.dt || 1) * 1000))
+  const currentTime = formatTime(new Date((currentWeather?.dt  || 1) * 1000))
   return (
     <div className="p-[20px] rounded-t-[4px] border border-b-0 border-[#969696] space-y-[12px]">
       <div className="space-y-[4px]">
@@ -32,7 +32,7 @@ const WeatherDetail = ({ currentWeather, currentLocation, airPollution, isCelsiu
         </div>
         <div className="space-y-[2px]">
           <p className="text-[14px] font-normal leading-[16.41px] text-[#222222]">{`Humidity: ${currentWeather?.humidity}%`}</p>
-          <p className="text-[14px] font-normal leading-[16.41px] text-[#222222]">{`Wind: ${currentWeather?.wind_speed} KPH ${getWindDirectionAbbreviation(currentWeather?.wind_speed || 0)}`}</p>
+          <p className="text-[14px] font-normal leading-[16.41px] text-[#222222]">{`Wind: ${convertWindSpeedToKPH(currentWeather?.wind_speed || 0)} KPH ${getWindDirection(currentWeather?.wind_deg || 0)}`}</p>
           <p className="text-[14px] font-normal leading-[16.41px] text-[#222222]">{`Air Quality: ${AQI[(airPollution?.main.aqi || 1) - 1]}`}</p>
         </div>
       </div>
