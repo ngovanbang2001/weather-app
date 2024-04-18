@@ -1,6 +1,6 @@
-import { weekdayShort } from "../../../config/constants"
-import { getIconUrl } from "../../../config/helpers"
-import { DailyWeather } from "../../../config/type"
+import { weekdayShort } from "../../config/constants"
+import { getIconUrl } from "../../config/helpers"
+import { DailyWeather } from "../../config/type"
 
 type Props = {
   weather: DailyWeather

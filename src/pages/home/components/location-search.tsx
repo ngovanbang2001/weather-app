@@ -27,7 +27,7 @@ const LocationSearch = ({ valueText, clearSearch, handleChangeSearch, handleEnte
           onClick={clearSearch}
           className="text-white absolute mx-[15px] right-0 top-0 h-full flex items-center cursor-pointe"
         >
-          <img className="z-1" src="./assets/icons/close.svg" alt="" />
+          <img className="z-1" src="../assets/icons/close.svg" alt="" />
         </button>
       </div>
     </form>

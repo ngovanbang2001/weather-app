@@ -1,13 +1,13 @@
 import { ChangeEvent, KeyboardEvent, useCallback, useState } from "react"
 import * as _ from 'lodash';
 import { getAirPollutionApi, getGeoInfoApi, getWeatherInfoApi } from "../api/homeServices";
-import { CNT, TempUnit } from "../../config/constants";
-import { AirPollution, CurrentWeather, DailyWeather, Location } from "../../config/type";
+import { CNT, TempUnit } from "../config/constants";
+import { AirPollution, CurrentWeather, DailyWeather, Location } from "../config/type";
 
 const useWeather = () => {
   const [query, setQuery] = useState<string>("")
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [forecastWeather, setForecastWeather] = useState<Array<DailyWeather>>()
+  const [forecastWeather, setForecastWeather] = useState<Array<DailyWeather> | null>()
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(null)
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null)
   const [airPollution, setAirPollution] = useState<AirPollution | null>(null)
@@ -34,6 +34,7 @@ const useWeather = () => {
         setCurrentWeather(resWeather.data.current)
     } catch (err) {
       console.log(err);
+      clearData()
     }
     setIsLoading(false)
   }
@@ -59,6 +60,13 @@ const useWeather = () => {
     if (e.key === 'Enter') {
       e.preventDefault();
     }
+  }
+
+  const clearData = () => {
+    setForecastWeather(null)
+    setCurrentWeather(null)
+    setCurrentLocation(null)
+    setAirPollution(null)
   }
 
   const clearSearch = () => {

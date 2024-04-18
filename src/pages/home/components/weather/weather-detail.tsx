@@ -1,6 +1,6 @@
-import { AQI, TempUnit, weekday } from "../../../config/constants"
-import { convertFahrenheit, formatTime, getIconUrl, getWindDirectionAbbreviation } from "../../../config/helpers"
-import { AirPollution, CurrentWeather, Location } from "../../../config/type"
+import { AQI, TempUnit, weekday } from "../../config/constants"
+import { convertFahrenheit, formatTime, getIconUrl, getWindDirectionAbbreviation } from "../../config/helpers"
+import { AirPollution, CurrentWeather, Location } from "../../config/type"
 
 type Props = {
   isCelsius: boolean

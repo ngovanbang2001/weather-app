@@ -1,5 +1,5 @@
 import apiClient from "../../../api/api-client"
-import { ForecastParam, QueryParam } from "../../config/type"
+import { ForecastParam, QueryParam } from "../config/type"
 
 const GEO_URL = '/geo/1.0/direct'
 const FORECAST_URL = 'data/2.5/onecall'

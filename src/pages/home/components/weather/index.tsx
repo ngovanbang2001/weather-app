@@ -1,5 +1,5 @@
-import { TempUnit } from '../../../config/constants'
-import { AirPollution, CurrentWeather, DailyWeather, Location } from '../../../config/type'
+import { TempUnit } from '../../config/constants'
+import { AirPollution, CurrentWeather, DailyWeather, Location } from '../../config/type'
 import WeatherDetail from './weather-detail'
 import WeatherSelectDay from './weather-select-day'
 
